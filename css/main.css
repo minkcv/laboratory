@@ -1,0 +1,114 @@
+@font-face {
+    font-family: droid_sans_mono_regular;
+    src: url('DroidSansMono.ttf');
+}
+pre {
+    font-family: droid_sans_mono_regular;
+    font-size: 9pt;
+    color: #cccccc;
+}
+h1, h2, h3, p {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #cccccc;
+}
+::-moz-selection {
+    color: #cccccc;
+    background: transparent;
+    background-color: transparent;
+}
+::selection {
+    color: #cccccc;
+    background: transparent;
+    background-color: transparent;
+}
+h1 {
+    font-size: 30pt;
+    margin: 0px;
+}
+#welcome {
+    margin: 15px;
+}
+.status-list > tbody > tr > td {
+    text-align: left;
+    min-width: 160px;
+}
+.status-list > tbody > tr > th {
+    text-align: left;
+    min-width: 160px;
+}
+.status-list > tbody > tr > td > pre {
+    margin: 0px;
+}
+.status-list > tbody > tr > th > pre {
+    margin: 0px;
+}
+td {
+    min-width: 120px;
+    text-align: center;
+}
+.tree-view {
+    margin: 15px;
+}
+.log {
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+.log > pre {
+    margin: 0px;
+}
+#error-log >pre {
+    color: #cc0000;
+}
+.status {
+    margin: 15px;
+}
+.status > pre {
+    display: inline;
+}
+.console {
+    height: 100%;
+    width: 100%;
+}
+#console-out {
+    overflow: scroll;
+    height: 95%;
+    width: 100%;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+#console-in-line {
+    background: #222222;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    margin: 0px;
+}
+#console-in {
+    width: 98%;
+    background: #222222;
+    border: none;
+    color: #cccccc;
+    font-family: droid_sans_mono_regular;
+    font-size: 9pt;
+}
+#console-in:focus {
+    outline-width: 0;
+}
+#console-in::selection {
+    color: #222222;
+    background: #cccccc;
+}
+#console-out > pre {
+    margin: 0px;
+}
+#three-substructure {
+    height: 70%;
+}
+#substructure-name {
+    font-family: droid_sans_mono_regular;
+    font-size: 9pt;
+    text-align: center;
+}
