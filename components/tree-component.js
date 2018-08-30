@@ -20,7 +20,9 @@ layout.registerComponent( 'treeComponent', function(container, componentState){
                 logInfo('Finished');
                 logInfo('Node conforms to expected substructure');
                 substructure.createScene(node.name);
+                superstructure.createScene(node.parent.name, node.name);
                 $('#substructure-name').html(node.name);
+                $('#superstructure-name').html(node.parent.name);
             }
             else {
                 $('#' + componentState.id).tree('toggle', node);

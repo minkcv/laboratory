@@ -42,7 +42,7 @@ var config = {
                     title: 'Welcome'
                 },{
                     type: 'component',
-                    componentName: 'testComponent',
+                    componentName: 'superstructureComponent',
                     componentState: {  },
                     isClosable: false,
                     title: 'Superstructure'
