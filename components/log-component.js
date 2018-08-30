@@ -18,4 +18,7 @@ layout.registerComponent( 'logComponent', function(container, componentState){
     else if (componentState.type == 'error') {
         container.getElement().html('<div class="log" id="error-log"></div>');
     }
+    else if (componentState.type == 'warning') {
+        container.getElement().html('<div class="log" id="warning-log"></div>');
+    }
 });

@@ -59,13 +59,19 @@ td {
 .log > pre {
     margin: 0px;
 }
-#error-log >pre {
+#error-log > pre {
     color: #cc0000;
 }
-.status {
+#warning-log > pre {
+    color: #969600;
+}
+.status, .analysis {
     margin: 15px;
 }
 .status > pre {
+    display: inline;
+}
+.analysis > pre {
     display: inline;
 }
 .console {

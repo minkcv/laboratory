@@ -78,6 +78,12 @@ var config = {
                 },{
                     type: 'component',
                     componentName: 'logComponent',
+                    componentState: { type: 'warning' },
+                    isClosable: false,
+                    title: 'Log - Warning'
+                },{
+                    type: 'component',
+                    componentName: 'logComponent',
                     componentState: { type: 'error' },
                     isClosable: false,
                     title: 'Log - Error'
@@ -93,7 +99,7 @@ var config = {
                     title: 'Substructure'
                 },{
                     type: 'component',
-                    componentName: 'testComponent',
+                    componentName: 'analysisComponent',
                     componentState: {  },
                     isClosable: false,
                     title: 'Analysis'
