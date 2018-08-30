@@ -118,3 +118,8 @@ td {
     font-size: 9pt;
     text-align: center;
 }
+#pointer {
+    position: absolute;
+    display: none;
+    margin: 0px;
+}

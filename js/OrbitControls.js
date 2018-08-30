@@ -291,7 +291,9 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 		return Math.pow( 0.95, scope.zoomSpeed );
 
-	}
+    }
+    
+    
 
 	function rotateLeft( angle ) {
 
@@ -320,30 +322,28 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 	}();
 
-	var panUp = function () {
+    // WILL also made this public in a rather sketchy way.
+	this.panUp = function ( distance, objectMatrix ) {
+        objectMatrix = objectMatrix || scope.object.matrix;
+        var v = new THREE.Vector3();
 
-		var v = new THREE.Vector3();
+        if ( scope.screenSpacePanning === true ) {
 
-		return function panUp( distance, objectMatrix ) {
+            v.setFromMatrixColumn( objectMatrix, 1 );
 
-			if ( scope.screenSpacePanning === true ) {
+        } else {
 
-				v.setFromMatrixColumn( objectMatrix, 1 );
+            v.setFromMatrixColumn( objectMatrix, 0 );
+            v.crossVectors( scope.object.up, v );
 
-			} else {
+        }
 
-				v.setFromMatrixColumn( objectMatrix, 0 );
-				v.crossVectors( scope.object.up, v );
+        v.multiplyScalar( distance );
 
-			}
+        panOffset.add( v );
 
-			v.multiplyScalar( distance );
+    };
 
-			panOffset.add( v );
-
-		};
-
-	}();
 
 	// deltaX and deltaY are in pixels; right and down are positive
 	var pan = function () {
@@ -372,7 +372,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 				// orthographic
 				panLeft( deltaX * ( scope.object.right - scope.object.left ) / scope.object.zoom / element.clientWidth, scope.object.matrix );
-				panUp( deltaY * ( scope.object.top - scope.object.bottom ) / scope.object.zoom / element.clientHeight, scope.object.matrix );
+				scope.panUp( deltaY * ( scope.object.top - scope.object.bottom ) / scope.object.zoom / element.clientHeight, scope.object.matrix );
 
 			} else {
 

@@ -5,7 +5,13 @@ var superstructure = {
     currentNodeId: 0,
     lineMat: null,
     camera: null,
-    controls: null
+    controls: null,
+    raycaster: null,
+    mouse: null,
+    mouseX: 0,
+    mouseY: 0,
+    cameraY: null,
+    camreaZoom: null
 }
 superstructure.init = function() {
     this.div = document.getElementById('three-superstructure');
@@ -13,6 +19,8 @@ superstructure.init = function() {
     this.renderer = new THREE.WebGLRenderer({alpha: true});
     this.resize(100, 100);
     this.lineMat = new THREE.LineBasicMaterial({color: 0xFFFFFF});
+    this.raycaster = new THREE.Raycaster();
+    this.mouse = new THREE.Vector2();
 }
 
 superstructure.resize = function(width, height) {
@@ -26,14 +34,22 @@ superstructure.resize = function(width, height) {
     this.camera = new THREE.OrthographicCamera(
         this.width / -scale, this.width / scale, 
         this.height / scale, this.height / -scale, -8000, 8000);
-    this.camera.position.set( 100, 100, 100 );
+    this.camera.translateY(1);
+    this.camera.translateZ(1);
     this.scene.add(this.camera);
     this.controls = new THREE.OrbitControls( this.camera, this.div );
     this.controls.autoRotate = true;
     this.controls.enableKeys = false;
     this.controls.screenSpacePanning = true;
-    this.controls.dollyOut(3);
     this.controls.update();
+    if (this.cameraY) {
+        this.controls.panUp(this.cameraY);
+        this.camera.zoom = this.cameraZoom;
+        this.controls.dollyOut(1);
+    }
+    else{
+        this.controls.dollyOut(3);
+    }
 }
 
 superstructure.generate = function(seed, iterations) {
@@ -112,6 +128,7 @@ superstructure.algorithm = function(data) {
 
 superstructure.createScene = function(seed, subseed) {
     this.clearScene();
+    Math.seedrandom(seed + subseed);
     var light = new THREE.DirectionalLight(0xffffff, 1);
     light.target.position.set(-0.5, 0, -0.8);
     this.scene.add(light);
@@ -139,9 +156,13 @@ superstructure.createScene = function(seed, subseed) {
             var boxGeom = new THREE.TetrahedronGeometry(radius, detail);
             var wgeom = new THREE.WireframeGeometry(boxGeom);
             var lines = new THREE.LineSegments(wgeom);
+            var colliderMaterial = new THREE.MeshBasicMaterial({color: 0xffffff, opacity: 0.2, transparent: true});
+            var collider = new THREE.Mesh(boxGeom, colliderMaterial);
+            collider.lines = lines;
             lines.material.depthTest = false;
             lines.material.opacity = 0.8;
             lines.material.transparent = true;
+            lines.data = graph[i][j].data;
             var color = {r: 1, g: 1, b: 1};
             if (node.prev.length > node.next.length)
                 color = {r: 0.8, g: 0.2, b: 0.1};
@@ -152,14 +173,19 @@ superstructure.createScene = function(seed, subseed) {
             
             lines.material.color = color;
             lines.rotateY(angle * j);
-            if (graph[i].length > 1)
+            collider.rotateY(angle * j);
+            if (graph[i].length > 1) {
                 lines.translateX(xSpacing);
+                collider.translateX(xSpacing);
+            }
             lines.translateY(-y);
+            collider.translateY(-y);
             lines.name = id;
             lines.prev = node.prev;
             lines.next = node.next;
             ids.push(id);
             this.scene.add(lines);
+            this.scene.add(collider);
         }
     }
 
@@ -193,6 +219,31 @@ superstructure.createScene = function(seed, subseed) {
 superstructure.render = function() {
     requestAnimationFrame( superstructure.render );
     superstructure.controls.update();
+    if (superstructure.height > 0) {
+        superstructure.cameraY = superstructure.camera.position.y;
+        superstructure.cameraZoom = superstructure.camera.zoom;
+    }
+    superstructure.raycaster.setFromCamera(superstructure.mouse, superstructure.camera);
+    var intersects = superstructure.raycaster.intersectObjects( superstructure.scene.children );
+    superstructure.scene.children.forEach(function(obj){
+        if (obj.material && obj.material.oldColor)
+            obj.material.color = obj.material.oldColor;
+    });
+    $('#pointer').css('display', 'none');
+    for (var i = 0; i < intersects.length; i++) {
+        var obj = intersects[i].object;
+        if (obj.type !== "Line") {
+            if (obj.lines)
+                obj = obj.lines;
+            obj.material.oldColor = obj.material.color
+            obj.material.color = {r: 1, g: 1, b: 1};
+            $('#pointer').html(obj.data);
+            $('#pointer').css('display', 'block');
+            $('#pointer').css('left', superstructure.mouseX);
+            $('#pointer').css('top', superstructure.mouseY);
+            break;
+        }
+    }
     superstructure.renderer.render( superstructure.scene, superstructure.camera );
 }
 superstructure.clearScene = function() {
@@ -200,11 +251,23 @@ superstructure.clearScene = function() {
         this.scene.remove(this.scene.children[0]);
     }
 }
+superstructure.mouseMove = function(event) {
+    var rect = superstructure.div.getBoundingClientRect();
+    superstructure.mouseX = event.clientX - rect.left;
+    superstructure.mouseY = event.clientY;
+    superstructure.mouse.x = ((event.clientX - rect.left) / superstructure.width ) * 2 - 1;
+    superstructure.mouse.y = - ((event.clientY - rect.top) / superstructure.height ) * 2 + 1;
+    if (superstructure.mouse.x < 0)
+        superstructure.mouseX -= 20;
+    else
+        superstructure.mouseX += 20;
+}
 
 layout.registerComponent('superstructureComponent', function(container, componentState){
-    container.getElement().html(`<pre id='superstructure-name'></pre><div id='three-superstructure'></div>`);
+    container.getElement().html(`<pre id='superstructure-name'></pre><pre id='pointer'></pre><div id='three-superstructure'></div>`);
     container.on('open', function() {
         superstructure.init();
+        window.addEventListener('mousemove', superstructure.mouseMove, false);
         superstructure.render();
     });
     container.on('resize', function(){

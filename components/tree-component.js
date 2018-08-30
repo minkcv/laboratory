@@ -22,7 +22,7 @@ layout.registerComponent( 'treeComponent', function(container, componentState){
                 substructure.createScene(node.name);
                 superstructure.createScene(node.parent.name, node.name);
                 $('#substructure-name').html(node.name);
-                $('#superstructure-name').html(node.parent.name);
+                $('#superstructure-name').html(node.parent.name + ' - ' + node.name);
                 var nodeInfo = node.name.split('-');
                 var complexity = parseInt(nodeInfo[0], 16) % 4;
                 var order = parseInt(nodeInfo[1], 16) % 4;
