@@ -1,7 +1,7 @@
 layout.registerComponent('welcomeComponent', function(container, componentState){
     container.getElement().html(`
     <div id='welcome'>
-        <h1><em>Objective Resarch Laboratories</em></h1>
+        <h1><em>Objective Research Laboratories</em></h1>
         <p>System Control Platform 4</p><hr/>
         <pre>This Device: 2b32031b2b52</pre>
         <h3>Module Status</h3>
