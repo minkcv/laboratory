@@ -42,10 +42,22 @@ var config = {
                     title: 'Welcome'
                 },{
                     type: 'component',
-                    componentName: 'superstructureComponent',
-                    componentState: {  },
+                    componentName: 'logComponent',
+                    componentState: { type: 'info' },
                     isClosable: false,
-                    title: 'Superstructure'
+                    title: 'Log - Info'
+                },{
+                    type: 'component',
+                    componentName: 'logComponent',
+                    componentState: { type: 'warning' },
+                    isClosable: false,
+                    title: 'Log - Warning'
+                },{
+                    type: 'component',
+                    componentName: 'logComponent',
+                    componentState: { type: 'error' },
+                    isClosable: false,
+                    title: 'Log - Error'
                 }]
             },{
                 type: 'stack',
@@ -71,22 +83,10 @@ var config = {
                 type: 'stack',
                 content:[{
                     type: 'component',
-                    componentName: 'logComponent',
-                    componentState: { type: 'info' },
+                    componentName: 'superstructureComponent',
+                    componentState: {  },
                     isClosable: false,
-                    title: 'Log - Info'
-                },{
-                    type: 'component',
-                    componentName: 'logComponent',
-                    componentState: { type: 'warning' },
-                    isClosable: false,
-                    title: 'Log - Warning'
-                },{
-                    type: 'component',
-                    componentName: 'logComponent',
-                    componentState: { type: 'error' },
-                    isClosable: false,
-                    title: 'Log - Error'
+                    title: 'Superstructure'
                 }]
             },{
                 type: 'stack',
