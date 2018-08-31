@@ -160,3 +160,6 @@ h1 {
 .vis-time-axis .vis-grid.vis-minor {
     border-color: #555555 !important;
 }
+.vis-text, .vis-label {
+    color: #cccccc !important;
+}

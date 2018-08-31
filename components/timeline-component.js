@@ -6,8 +6,8 @@ layout.registerComponent( 'timelineComponent', function(container, componentStat
         var div = $('#timeline')[0];
         var items = new vis.DataSet([
             {id: 1, content: 'Phase A', start: '3013-04-20', end: '3013-06-09', className: 'timeline-item', group: 1},
-            {id: 2, content: 'Phase B', start: '3013-07-14', end: '3013-08-09', className: 'timeline-item', group: 1},
-            {id: 3, content: 'Phase F', start: '3013-06-18', end: '3013-07-20', className: 'timeline-item', group: 2},
+            {id: 2, content: 'Phase B', start: '3013-07-14', end: '3013-08-19', className: 'timeline-item', group: 1},
+            {id: 3, content: 'Phase F', start: '3013-06-18', end: '3013-07-30', className: 'timeline-item', group: 2},
             {id: 4, content: 'Phase C', start: '3013-07-16', end: '3013-08-19', className: 'timeline-item', group: 3},
             {id: 5, content: 'Phase E', start: '3013-09-09', end: '3013-10-30', className: 'timeline-item', group: 1},
             {id: 6, content: 'Phase D', start: '3013-09-27', end: '3013-11-19', className: 'timeline-item', group: 3},
@@ -30,8 +30,10 @@ layout.registerComponent( 'timelineComponent', function(container, componentStat
         timeline.redraw();
     });
     container.on('show', function(){
-        timeline.options.height = $('#timeline').height();
-        timeline.redraw();
+        window.setTimeout(function(){
+            timeline.options.height = $('#timeline').height();
+            timeline.redraw();
+        }, 300);
     });
     container.on('resize', function() {
         window.setTimeout(function(){
