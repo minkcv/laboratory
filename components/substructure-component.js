@@ -15,7 +15,7 @@ substructure.init = function() {
     var scale = 20;
     this.camera = new THREE.OrthographicCamera(
         this.width / -scale, this.width / scale, 
-        this.height / scale, this.height / -scale, 0, 100);
+        this.height / scale, this.height / -scale, -100, 100);
     this.scene.add(this.camera);
     this.camera.translateZ(20);
 }
@@ -51,10 +51,32 @@ substructure.clearScene = function() {
     }
 }
 
+substructure.resize = function(width, height) {
+    this.width = width;
+    this.height = height;
+    var scale = 20;
+    this.renderer.setSize(this.width, this.height);
+    this.camera = new THREE.OrthographicCamera(
+        this.width / -scale, this.width / scale, 
+        this.height / scale, this.height / -scale, -100, 100);
+    this.scene.add(this.camera);
+}
+
 layout.registerComponent( 'substructureComponent', function(container, componentState){
     container.getElement().html(`<pre id='substructure-name'></pre><div id='three-substructure'></div>`);
     container.on('open', function(){
-        substructure.init();
-        substructure.render();
+        if (substructure.div == null) {
+            substructure.init();
+            substructure.render();
+        }
+    });
+    container.on('resize', function() {
+        substructure.resize(container.width, container.height);
+    });
+    container.on('show', function() {
+        if (substructure.div == null) {
+            substructure.init();
+            substructure.render();
+        }
     });
 });
