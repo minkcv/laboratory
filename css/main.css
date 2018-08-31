@@ -147,3 +147,16 @@ h1 {
     margin: 0px;
     color: green;
 }
+#timeline {
+    height: 100%;
+}
+#timeline > * {
+    font-family: droid_sans_mono_regular;
+    font-size: 9pt;
+}
+.vis-item.timeline-item {
+    background: #cccccc;
+}
+.vis-time-axis .vis-grid.vis-minor {
+    border-color: #555555 !important;
+}

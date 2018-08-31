@@ -67,7 +67,7 @@ var config = {
                 }]
             },{
                 type: 'stack',
-                height: 15,
+                height: 18,
                 content:[{
                     type: 'component',
                     componentName: 'consoleComponent',
@@ -76,7 +76,7 @@ var config = {
                     title: 'Console'
                 },{
                     type: 'component',
-                    componentName: 'testComponent',
+                    componentName: 'timelineComponent',
                     componentState: {  },
                     isClosable: false,
                     title: 'Timeline'
