@@ -266,14 +266,23 @@ superstructure.mouseMove = function(event) {
 layout.registerComponent('superstructureComponent', function(container, componentState){
     container.getElement().html(`<pre id='superstructure-name'></pre><pre id='pointer'></pre><div id='three-superstructure'></div>`);
     container.on('open', function() {
+        if (superstructure.div == null)
+        {
+            superstructure.init();
+            window.addEventListener('mousemove', superstructure.mouseMove, false);
+            superstructure.render();
+        }
         superstructure.resize(container.width, container.height);
     });
     container.on('resize', function(){
         superstructure.resize(container.width, container.height);
     });
     container.on('show', function(){
-        superstructure.init();
-        window.addEventListener('mousemove', superstructure.mouseMove, false);
-        superstructure.render();
+        if (superstructure.div == null)
+        {
+            superstructure.init();
+            window.addEventListener('mousemove', superstructure.mouseMove, false);
+            superstructure.render();
+        }
     });
 });

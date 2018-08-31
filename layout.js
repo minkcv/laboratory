@@ -71,7 +71,7 @@ var config = {
                 content:[{
                     type: 'component',
                     componentName: 'consoleComponent',
-                    componentState: { label: 'A' },
+                    componentState: {  },
                     isClosable: false,
                     title: 'Console'
                 },{
@@ -80,6 +80,12 @@ var config = {
                     componentState: {  },
                     isClosable: false,
                     title: 'Timeline'
+                },{
+                    type: 'component',
+                    componentName: 'logComponent',
+                    componentState: { type: 'diagnostic' },
+                    isClosable: false,
+                    title: 'Diagnostic Report'
                 }]
             }]
         },{
