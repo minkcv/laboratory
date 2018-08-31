@@ -29,7 +29,6 @@ h1 {
     margin: 15px;
 }
 .status-list > tbody > tr > td {
-    text-align: left;
     min-width: 160px;
 }
 .status-list > tbody > tr > th {
@@ -41,10 +40,6 @@ h1 {
 }
 .status-list > tbody > tr > th > pre {
     margin: 0px;
-}
-td {
-    min-width: 120px;
-    text-align: center;
 }
 .tree-view {
     margin: 15px;
@@ -122,4 +117,14 @@ td {
     position: absolute;
     display: none;
     margin: 0px;
+}
+.data-table {
+    border-collapse: collapse;
+}
+.data-table > thead > tr > th, .data-table > tbody > tr > td {
+    border: 1px solid #444444;
+}
+.data-table > thead > tr > th > pre, .data-table > tbody > tr > td > pre {
+    min-height: 18px;
+    margin: 2px;
 }

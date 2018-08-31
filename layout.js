@@ -58,6 +58,12 @@ var config = {
                     componentState: { type: 'error' },
                     isClosable: false,
                     title: 'Log - Error'
+                },{
+                    type: 'component',
+                    componentName: 'dataComponent',
+                    componentState: {  },
+                    isClosable: false,
+                    title: 'Data'
                 }]
             },{
                 type: 'stack',
