@@ -63,7 +63,7 @@ var config = {
                     componentName: 'dataComponent',
                     componentState: {  },
                     isClosable: false,
-                    title: 'Data'
+                    title: 'Hardware Data'
                 }]
             },{
                 type: 'stack',

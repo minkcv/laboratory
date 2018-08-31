@@ -118,13 +118,32 @@ h1 {
     display: none;
     margin: 0px;
 }
+#data-component {
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    padding-right: 20px;
+}
 .data-table {
     border-collapse: collapse;
+    width: 100%; /* remove this and style scrollbars? */
 }
 .data-table > thead > tr > th, .data-table > tbody > tr > td {
     border: 1px solid #444444;
+    text-align: left;
 }
 .data-table > thead > tr > th > pre, .data-table > tbody > tr > td > pre {
     min-height: 18px;
     margin: 2px;
+}
+.data-table > tbody {
+    overflow: auto;
+}
+.nullptr {
+    margin: 0px;
+    color: #cc0000;
+}
+.green-lambda {
+    margin: 0px;
+    color: green;
 }
