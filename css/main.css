@@ -112,6 +112,7 @@ h1 {
     font-family: droid_sans_mono_regular;
     font-size: 9pt;
     text-align: center;
+    margin-bottom: 0px;
 }
 #pointer {
     position: absolute;
@@ -126,7 +127,7 @@ h1 {
 }
 .data-table {
     border-collapse: collapse;
-    width: 100%; /* remove this and style scrollbars? */
+    width: 100%;
 }
 .data-table > thead > tr > th, .data-table > tbody > tr > td {
     border: 1px solid #444444;
@@ -162,4 +163,7 @@ h1 {
 }
 .vis-text, .vis-label {
     color: #cccccc !important;
+}
+#code-file {
+    margin: 5px;
 }

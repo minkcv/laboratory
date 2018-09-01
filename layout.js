@@ -17,11 +17,18 @@ var config = {
                 title: 'Internal System'
             },{
                 type: 'component',
-                height: 30,
+                height: 20,
                 componentName: 'treeComponent',
                 componentState: { view: 'external', id: '1' },
                 isClosable: false,
                 title: 'External System'
+            },{
+                type: 'component',
+                height: 20,
+                componentName: 'treeComponent',
+                componentState: { view: 'code', id: '2' },
+                isClosable: false,
+                title: 'Code System'
             },{
                 type: 'component',
                 height: 20,
@@ -64,6 +71,12 @@ var config = {
                     componentState: {  },
                     isClosable: false,
                     title: 'Hardware Data'
+                },{
+                    type: 'component',
+                    componentName: 'codeComponent',
+                    componentState: {  },
+                    isClosable: false,
+                    title: 'Code Editor'
                 }]
             },{
                 type: 'stack',

@@ -51,7 +51,7 @@ layout.registerComponent( 'logComponent', function(container, componentState){
             logDiagnostic('Full Device Display:      Enabled');
             logDiagnostic('Begin Local Submodule List:');
             logDiagnostic('    CMDR.sys');
-            logDiagnostic('    MSVR.sys');
+            logDiagnostic('    MDVR.sys');
             logDiagnostic('    LNDR.sys');
             logDiagnostic('    HWND.sys');
             logDiagnostic('End Local Submodule List');

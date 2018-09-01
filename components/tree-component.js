@@ -1,9 +1,10 @@
 layout.registerComponent( 'treeComponent', function(container, componentState){
     container.getElement().html('<div class="tree-view" id=' + componentState.id + '></div>');
     container.on('open', function() {
+        var autoOpen = componentState.view == 'code' ? true : false;
         $('#' + componentState.id).tree({
             data: componentState.data,
-            autoOpen: false,
+            autoOpen: autoOpen,
             dragAndDrop: false,
             selectable: false,
             slide: false,
@@ -11,7 +12,15 @@ layout.registerComponent( 'treeComponent', function(container, componentState){
             openedIcon: '-'
         }).on('tree.click', function(event){
             var node = event.node;
-            if (node.children.length == 0) {
+            if (node.code) {
+                if (node.children.length > 0) {
+                    $('#' + componentState.id).tree('toggle', node);
+                }
+                else {
+                    $('#code-file').html(codeFiles[node.id]);
+                }
+            }
+            else if (node.children.length == 0) {
                 var location = 'internal';
                 if (node.external)
                     location = 'external'
@@ -82,6 +91,19 @@ layout.registerComponent( 'treeComponent', function(container, componentState){
                 children: [{ name: '6e5e-4c48-9429', external: true }]
             }
         ];
+    }
+    else if (componentState.view == 'code') {
+        data = [
+            {
+                name: '.code_segment', code: true,
+                children: [
+                    { name: 'CMDR.sys', code: true, id: 0 },
+                    { name: 'MDVR.sys', code: true, id: 1 },
+                    { name: 'LNDR.sys', code: true, id: 2 },
+                    { name: 'HWND.sys', code: true, id: 3 }
+                ]
+            }
+        ]
     }
     componentState.data = data;
 });
