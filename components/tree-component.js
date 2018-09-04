@@ -18,6 +18,9 @@ layout.registerComponent( 'treeComponent', function(container, componentState){
                 }
                 else {
                     $('#code-file').html(codeFiles[node.id]);
+                    $('#code-file').each(function(i, block) {
+                        hljs.highlightBlock(block);
+                    });
                 }
             }
             else if (node.children.length == 0) {

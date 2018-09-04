@@ -2,6 +2,9 @@
     font-family: droid_sans_mono_regular;
     src: url('DroidSansMono.ttf');
 }
+* {
+    box-sizing: content-box;
+}
 pre {
     font-family: droid_sans_mono_regular;
     font-size: 9pt;
@@ -9,7 +12,12 @@ pre {
 }
 h1, h2, h3, p {
     font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
     color: #cccccc;
+}
+h2 {
+    margin-top: 5px;
+    margin-left: 5px;
 }
 ::-moz-selection {
     color: #cccccc;
@@ -165,13 +173,15 @@ h1 {
     color: #cccccc !important;
 }
 #code-file {
-    margin: 5px;
+    width: 100%;
+    height: 100%;
+    padding-right: 0px;
 }
 .timeline-range-red {
     background: repeating-linear-gradient(45deg, #ff252581, #ff252581 10px, #a5151581 10px, #a5151581 20px);
 }
 .timeline-range-green {
-    background: repeating-linear-gradient(45deg, #37ff2581, #37ff2581 10px, #2da51581 10px, #2da51581 20px);
+    background: repeating-linear-gradient(45deg, #f825ff81, #f825ff81 10px, #a5159981 10px, #a5159981 20px);
 }
 .timeline-range-blue {
     background: repeating-linear-gradient(45deg, #2546ff81, #2546ff81 10px, #152fa581 10px, #152fa581 20px);
@@ -184,4 +194,25 @@ h1 {
 .vis-selected {
     background: #ffffff !important;
     border-color: #ffffff !important;
+}
+.progress {
+    font-family: droid_sans_mono_regular;
+    background-color: rgba(0, 0, 0, 0);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.bars > pre {
+    margin: 0px 10px 0px 10px;
+}
+.bar-info {
+    background-color: #004d96 !important;
+}
+.bar-warning {
+    background-color: #96008e !important;
+}
+.bar-danger {
+    background-color: #9e0022 !important;
+}
+a:not([href]):not([tabindex]) {
+    color: #cccccc; /* undo bootstrap stuff to fix tree controls */
 }

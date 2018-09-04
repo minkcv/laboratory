@@ -76,7 +76,13 @@ var config = {
                     componentName: 'codeComponent',
                     componentState: {  },
                     isClosable: false,
-                    title: 'Code Editor'
+                    title: 'Code Viewer'
+                },{
+                    type: 'component',
+                    componentName: 'barComponent',
+                    componentState: {  },
+                    isClosable: false,
+                    title: 'System Resources'
                 }]
             },{
                 type: 'stack',
