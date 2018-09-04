@@ -83,6 +83,12 @@ var config = {
                     componentState: {  },
                     isClosable: false,
                     title: 'System Resources'
+                },{
+                    type: 'component',
+                    componentName: 'graphComponent',
+                    componentState: {  },
+                    isClosable: false,
+                    title: 'Graph'
                 }]
             },{
                 type: 'stack',

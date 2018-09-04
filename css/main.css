@@ -218,3 +218,7 @@ h1 {
 a:not([href]):not([tabindex]) {
     color: #cccccc; /* undo bootstrap stuff to fix tree controls */
 }
+#graph {
+    width: 100%;
+    height: 100%;
+}
