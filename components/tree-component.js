@@ -18,6 +18,7 @@ layout.registerComponent( 'treeComponent', function(container, componentState){
                 }
                 else {
                     $('#code-file').html(codeFiles[node.id]);
+                    logWarning('Opening ' + node.name + ' as read only');
                     $('#code-file').each(function(i, block) {
                         hljs.highlightBlock(block);
                     });
