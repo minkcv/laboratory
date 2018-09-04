@@ -167,3 +167,21 @@ h1 {
 #code-file {
     margin: 5px;
 }
+.timeline-range-red {
+    background: repeating-linear-gradient(45deg, #ff252581, #ff252581 10px, #a5151581 10px, #a5151581 20px);
+}
+.timeline-range-green {
+    background: repeating-linear-gradient(45deg, #37ff2581, #37ff2581 10px, #2da51581 10px, #2da51581 20px);
+}
+.timeline-range-blue {
+    background: repeating-linear-gradient(45deg, #2546ff81, #2546ff81 10px, #152fa581 10px, #152fa581 20px);
+}
+.timeline-range-red > .vis-item-overflow > .vis-item-content, 
+.timeline-range-green > .vis-item-overflow > .vis-item-content,
+.timeline-range-blue > .vis-item-overflow > .vis-item-content {
+    color: #ffffff !important;
+}
+.vis-selected {
+    background: #ffffff !important;
+    border-color: #ffffff !important;
+}

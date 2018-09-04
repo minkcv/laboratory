@@ -11,7 +11,9 @@ layout.registerComponent( 'timelineComponent', function(container, componentStat
             {id: 4, content: 'Phase C', start: '3013-07-16', end: '3013-08-19', className: 'timeline-item', group: 3},
             {id: 5, content: 'Phase E', start: '3013-09-09', end: '3013-10-30', className: 'timeline-item', group: 1},
             {id: 6, content: 'Phase D', start: '3013-09-27', end: '3013-11-19', className: 'timeline-item', group: 3},
-            {id: 'A', content: 'Operation Window', start: '3013-01-01', end: '3013-01-01', className: 'timeline-range', type: 'background'}
+            {id: 'A', content: 'Operation A', start: '3013-01-01', end: '3014-01-01', className: 'timeline-range-red', type: 'background', group: 1},
+            {id: 'B', content: 'Operation B', start: '3013-03-01', end: '3013-09-01', className: 'timeline-range-green', type: 'background', group: 2},
+            {id: 'C', content: 'Operation C', start: '3013-06-01', end: '3013-11-01', className: 'timeline-range-blue', type: 'background', group: 3}
         ]);
         var groups = new vis.DataSet([
             {id: 1, content: 'TL1'},
