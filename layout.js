@@ -1,4 +1,4 @@
-var config = {
+var content = {
     settings: {
         showPopoutIcon: false,
         showMaximiseIcon: false,
@@ -145,4 +145,4 @@ var config = {
         }]
     }]
 };
-var layout = new GoldenLayout(config);
+var layout = new GoldenLayout(content);
