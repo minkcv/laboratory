@@ -142,21 +142,26 @@ h1 {
 .data-table > thead > tr > th, .data-table > tbody > tr > td {
     border: 1px solid #444444;
     text-align: left;
+    padding: 0px;
+    color: #cccccc;
 }
 .data-table > thead > tr > th > pre, .data-table > tbody > tr > td > pre {
     min-height: 18px;
-    margin: 2px;
+    padding: 2px;
+    margin: 0px;
 }
 .data-table > tbody {
     overflow: auto;
 }
 .nullptr {
     margin: 0px;
-    color: #cc0000;
+    color: #ffffff;
+    background: #9e0000;
 }
 .green-lambda {
     margin: 0px;
-    color: green;
+    color: #ffffff;
+    background: #004d96;
 }
 #timeline {
     height: 100%;
@@ -213,7 +218,7 @@ h1 {
     background-color: #96008e !important;
 }
 .bar-danger {
-    background-color: #9e0022 !important;
+    background-color: #9e0000 !important;
 }
 a:not([href]):not([tabindex]) {
     color: #cccccc; /* undo bootstrap stuff to fix tree controls */

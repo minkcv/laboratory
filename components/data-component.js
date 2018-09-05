@@ -30,7 +30,7 @@ layout.registerComponent( 'dataComponent', function(container, componentState){
     `;
     for (var i = 0; i < data[0].length; i++) {
         html +=`
-                        <th><pre>` + data[0][i] + `</pre></th>
+                        <th>` + data[0][i] + `</th>
         `;
     }
     html +=`
@@ -42,7 +42,7 @@ layout.registerComponent( 'dataComponent', function(container, componentState){
         html += `   <tr>`
         for (var j = 0; j < data[i].length; j++) {
             html +=`
-                        <td><pre>` + data[i][j] + `</pre></td>
+                        <td>` + data[i][j] + `</td>
             `;
         }
         html += `   </tr>`
@@ -57,13 +57,13 @@ layout.registerComponent( 'dataComponent', function(container, componentState){
 
 function getDataID() {
     var id = Math.floor(Math.random() * 10000000).toString();
-    return id.padStart(8, '0');
+    return '<pre>' + id.padStart(8, '0') + '</pre>';
 }
 
 function getDataRPC() {
     var rpc1 = Math.floor(Math.random() * 10000).toString();
     var rpc2 = Math.floor(Math.random() * 1000).toString();
-    return rpc1.padStart(4, '0') + '-' + rpc2.padStart(4, '0');
+    return '<pre>' + rpc1.padStart(4, '0') + '-' + rpc2.padStart(4, '0') + '</pre>';
 }
 
 function getDataAddress() {
@@ -71,17 +71,17 @@ function getDataAddress() {
     if (Math.random() < 0.3) {
         return '<pre class="nullptr">0x00000000</pre>';
     }
-    return '0x' + addr.padStart(8, '0');
+    return '<pre>0x' + addr.padStart(8, '0') + '</pre>';
 }
 
 function getDataOffset() {
     var offset = Math.floor(Math.random() * 10000000).toString(16);
-    return '0x' + offset.padStart(8, '0');
+    return '<pre>0x' + offset.padStart(8, '0') + '</pre>';
 }
 
 function getDataSize() {
     var size = Math.floor(Math.random() * 10000000).toString(16);
-    return size.padStart(8, '0');
+    return '<pre>' + size.padStart(8, '0') + '</pre>';
 }
 
 function getDataScatterLambda() {
@@ -89,12 +89,12 @@ function getDataScatterLambda() {
     sl = Math.round(sl * 10000) / 10000;
     if (sl > 50)
         return "<pre class='green-lambda'>" + sl.toString().padEnd(8, '0') + "</pre>";
-    return sl.toString().padEnd(8, '0');
+    return '<pre>' + sl.toString().padEnd(8, '0') + '</pre>';
 }
 
 function getDataStatePrediction() {
     var s1 = Math.floor(Math.random() * 10);
     var s2 = Math.floor(Math.random() * 10);
     var s3 = Math.floor(Math.random() * 10);
-    return s1 + ' > ' + s2 + ' > ' + s3;
+    return '<pre>' + s1 + ' > ' + s2 + ' > ' + s3 + '</pre>';
 }
