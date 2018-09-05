@@ -9,7 +9,7 @@ layout.registerComponent( 'graphComponent', function(container, componentState){
         var axisStep = axisMax / steps;
         for (var x = -axisMax; x < axisMax; x+=axisStep) {
             for (var y = -axisMax; y < axisMax; y+=axisStep) {
-                var value = Math.tan(Math.sqrt(x * x + y * y));
+                var value = Math.sin(x) + Math.tan(x * y);
                 data.add({id:counter++,x:x,y:y,z:value,style:value});
             }
         }
