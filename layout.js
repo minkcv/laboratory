@@ -30,12 +30,21 @@ var config = {
                 isClosable: false,
                 title: 'Code System'
             },{
-                type: 'component',
+                type: 'stack',
                 height: 20,
-                componentName: 'statusComponent',
-                componentState: {  },
-                isClosable: false,
-                title: 'Status'
+                content: [{
+                    type: 'component',
+                    componentName: 'statusComponent',
+                    componentState: {  },
+                    isClosable: false,
+                    title: 'Status'
+                },{
+                    type: 'component',
+                    componentName: 'logComponent',
+                    componentState: { type: 'diagnostic' },
+                    isClosable: false,
+                    title: 'Diagnostic Report'
+                }]
             }]
         },{
             type: 'column',
@@ -88,7 +97,7 @@ var config = {
                     componentName: 'graphComponent',
                     componentState: {  },
                     isClosable: false,
-                    title: 'Graph'
+                    title: 'Interference Graph'
                 }]
             },{
                 type: 'stack',
@@ -105,12 +114,6 @@ var config = {
                     componentState: {  },
                     isClosable: false,
                     title: 'Timeline'
-                },{
-                    type: 'component',
-                    componentName: 'logComponent',
-                    componentState: { type: 'diagnostic' },
-                    isClosable: false,
-                    title: 'Diagnostic Report'
                 }]
             }]
         },{
