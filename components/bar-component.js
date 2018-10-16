@@ -27,6 +27,7 @@ layout.registerComponent( 'barComponent', function(container, componentState){
         ['Network SOC Group 2', 40, 0, 0],
         ['Network SOC Group 3', 40, 0, 0],
     ];
+    var id = 0;
     var html = '';
     for (var i = 0; i < bars.length; i++) {
         if (!Array.isArray(bars[i])) {
@@ -48,10 +49,32 @@ layout.registerComponent( 'barComponent', function(container, componentState){
             }
             var percent = (bars[i][j] / total) * 100;
             bar += `
-                <div class="progress-bar ` + type + `" role="progressbar" style="width:` + percent + `%">` + bars[i][j] + ' ' + desc + `</div>`;
+                <div id='bar` + id++ + `' class="progress-bar ` + type + `" role="progressbar" style="width:` + percent + `%" desc="` + desc + `" ></div>`;
         }
         bar += `</div>`;
         html += bar;
     }
     container.getElement().html('<div class="bars log">' + html + '</div>');
+    updateBars();
 });
+
+function updateBars() {
+    setTimeout(updateBars, 1000);
+    var id = 0;
+    var elt = document.getElementById('bar' + id);
+    var percent = 100;
+    while (elt != null) {
+        var width = Math.random() * 100;
+        if (width < 20 || width > 80)
+            width = 20;
+        if (width > percent || id % 3 == 2)
+            width = percent;
+        elt.style.width = width + '%';
+        elt.innerHTML = Math.floor(width) + ' ' +  elt.getAttribute('desc');
+        percent -= width;
+        id++;
+        elt = document.getElementById('bar' + id);
+        if (id % 3 == 0)
+            percent = 100;
+    }
+}
