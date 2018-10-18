@@ -13,10 +13,7 @@ layout.registerComponent( 'dataComponent', function(container, componentState){
         row.push(getDataOffset());
         row.push(getDataSize());
         row.push(getDataScatterLambda());
-        if (row[2] == '<pre class="nullptr">0x00000000</pre>')
-            row.push('-');
-        else
-            row.push(getDataStatePrediction());
+        row.push(getDataStatePrediction());
         data.push(row);
     }
     
@@ -42,7 +39,7 @@ layout.registerComponent( 'dataComponent', function(container, componentState){
         html += `   <tr>`
         for (var j = 0; j < data[i].length; j++) {
             html +=`
-                        <td>` + data[i][j] + `</td>
+                        <td class='` + data[0][j] + `' >` + data[i][j] + `</td>
             `;
         }
         html += `   </tr>`
@@ -53,6 +50,7 @@ layout.registerComponent( 'dataComponent', function(container, componentState){
         </div>
     `;
     container.getElement().html(html);
+    updateData();
 });
 
 function getDataID() {
@@ -97,4 +95,31 @@ function getDataStatePrediction() {
     var s2 = Math.floor(Math.random() * 10);
     var s3 = Math.floor(Math.random() * 10);
     return '<pre>' + s1 + ' > ' + s2 + ' > ' + s3 + '</pre>';
+}
+
+function updateData() {
+    setTimeout(updateData, 1000);
+    var elements = document.querySelectorAll('.data-table > tbody > tr > td');
+    for (var index = 0; index < elements.length; index++) {
+        var elt = elements[index];
+        var cl = elt.getAttribute('class');
+        if (cl == 'RPC' && Math.random() > 0.5) {
+            elt.innerHTML = getDataRPC();
+        }
+        if (cl == 'ADDRESS' && Math.random() > 0.5) {
+            elt.innerHTML = getDataAddress();
+        }
+        if (cl == 'OFFSET' && Math.random() > 0.5) {
+            elt.innerHTML = getDataOffset();
+        }
+        if (cl == 'SIZE' && Math.random() > 0.5) {
+            elt.innerHTML = getDataSize();
+        }
+        if (cl == 'SCATTER LAMBDA' && Math.random() > 0.5) {
+            elt.innerHTML = getDataScatterLambda();
+        }
+        if (cl == 'STATE PREDICTION' && Math.random() > 0.5) {
+            elt.innerHTML = getDataStatePrediction();
+        }
+    }
 }
