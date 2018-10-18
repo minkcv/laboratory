@@ -128,5 +128,5 @@ for (var i = 0; i < codeFiles.length; i++) {
 }
 
 layout.registerComponent( 'codeComponent', function(container, componentState){
-    container.getElement().html('<div class="log"><pre id="code-file"></pre></div>');
+    container.getElement().html('<pre class="log" id="code-file"></pre>');
 });

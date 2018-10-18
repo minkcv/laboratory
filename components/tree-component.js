@@ -1,7 +1,7 @@
 layout.registerComponent( 'treeComponent', function(container, componentState){
     container.getElement().html('<div class="tree-view" id=' + componentState.id + '></div>');
     container.on('open', function() {
-        var autoOpen = componentState.view == 'code' ? true : false;
+        var autoOpen = true;
         $('#' + componentState.id).tree({
             data: componentState.data,
             autoOpen: autoOpen,

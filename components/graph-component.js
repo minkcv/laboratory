@@ -1,7 +1,7 @@
 var graph3d;
 layout.registerComponent( 'graphComponent', function(container, componentState){
     container.getElement().html('<div class="" id="graph">TEST</div>');
-    container.on('open', function() {
+    container.on('show', function() {
         var data = new vis.DataSet();
         var counter = 0;
         var steps = 20;

@@ -8,7 +8,7 @@ var config = {
         type: 'row',
         content:[{
             type: 'column',
-            width: 20,
+            width: 10,
             content:[{
                 type: 'component',
                 componentName: 'treeComponent',
@@ -38,43 +38,13 @@ var config = {
                     componentState: {  },
                     isClosable: false,
                     title: 'Status'
-                },{
-                    type: 'component',
-                    componentName: 'logComponent',
-                    componentState: { type: 'diagnostic' },
-                    isClosable: false,
-                    title: 'Diagnostic Report'
                 }]
             }]
         },{
             type: 'column',
             content:[{
-                type: 'stack', 
+                type: 'row', 
                 content: [{
-                    type: 'component',
-                    componentName: 'welcomeComponent',
-                    componentState: {  },
-                    isClosable: false,
-                    title: 'Welcome'
-                },{
-                    type: 'component',
-                    componentName: 'logComponent',
-                    componentState: { type: 'info' },
-                    isClosable: false,
-                    title: 'Log - Info'
-                },{
-                    type: 'component',
-                    componentName: 'logComponent',
-                    componentState: { type: 'warning' },
-                    isClosable: false,
-                    title: 'Log - Warning'
-                },{
-                    type: 'component',
-                    componentName: 'logComponent',
-                    componentState: { type: 'error' },
-                    isClosable: false,
-                    title: 'Log - Error'
-                },{
                     type: 'component',
                     componentName: 'dataComponent',
                     componentState: {  },
@@ -82,43 +52,82 @@ var config = {
                     title: 'Hardware Data'
                 },{
                     type: 'component',
+                    componentName: 'barComponent',
+                    componentState: {  },
+                    isClosable: false,
+                    title: 'System Resources'
+                }]
+            },{
+                type: 'row',
+                content: [{
+                    type: 'stack',
+                    content: [{
+                        type: 'component',
+                        componentName: 'logComponent',
+                        componentState: { type: 'diagnostic' },
+                        isClosable: false,
+                        title: 'Diagnostic Report'
+                    },{
+                        type: 'component',
+                        componentName: 'logComponent',
+                        componentState: { type: 'info' },
+                        isClosable: false,
+                        title: 'Log - Info'
+                    },{
+                        type: 'component',
+                        componentName: 'logComponent',
+                        componentState: { type: 'warning' },
+                        isClosable: false,
+                        title: 'Log - Warning'
+                    },{
+                        type: 'component',
+                        componentName: 'logComponent',
+                        componentState: { type: 'error' },
+                        isClosable: false,
+                        title: 'Log - Error'
+                    }]
+                },{
+                    type: 'component',
                     componentName: 'codeComponent',
                     componentState: {  },
                     isClosable: false,
                     title: 'Code Viewer'
                 },{
-                    type: 'component',
-                    componentName: 'barComponent',
-                    componentState: {  },
-                    isClosable: false,
-                    title: 'System Resources'
-                },{
-                    type: 'component',
-                    componentName: 'graphComponent',
-                    componentState: {  },
-                    isClosable: false,
-                    title: 'Interference Graph'
+                    type: 'stack',
+                    content: [{
+                        type: 'component',
+                        componentName: 'graphComponent',
+                        componentState: {  },
+                        isClosable: false,
+                        title: 'Interference Graph'
+                    },{
+                        type: 'component',
+                        componentName: 'welcomeComponent',
+                        componentState: {  },
+                        isClosable: false,
+                        title: 'Welcome'
                 }]
+            }]
             },{
                 type: 'stack',
                 height: 18,
                 content:[{
                     type: 'component',
-                    componentName: 'consoleComponent',
-                    componentState: {  },
-                    isClosable: false,
-                    title: 'Console'
-                },{
-                    type: 'component',
                     componentName: 'timelineComponent',
                     componentState: {  },
                     isClosable: false,
                     title: 'Timeline'
+                },{
+                    type: 'component',
+                    componentName: 'consoleComponent',
+                    componentState: {  },
+                    isClosable: false,
+                    title: 'Console'
                 }]
             }]
         },{
             type: 'column',
-            width: 20,
+            width: 10,
             content:[{
                 type: 'stack',
                 content:[{
@@ -129,7 +138,7 @@ var config = {
                     title: 'Superstructure'
                 }]
             },{
-                type: 'stack',
+                type: 'column',
                 height: 30,
                 content: [{
                     type: 'component',
@@ -148,4 +157,4 @@ var config = {
         }]
     }]
 };
-//var layout = new GoldenLayout(config);
+var layout = new GoldenLayout(config);
